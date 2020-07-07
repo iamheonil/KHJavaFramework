@@ -94,6 +94,12 @@ public class EmpEx {
 		Emp deleteNo = new Emp();
 		deleteNo.setEmpno(sc.nextInt());
 		
+		empDao.deleteEmp(deleteNo);
+		System.out.println(deleteNo + " 는 삭제 성공 수고링");
+		
+		sqlSession.commit();
+		System.out.println("커밋이 완료 되었습니다.");
+		
 		System.out.println("=- =- =- =- =- =- =- =- =- =- =- =- =- =- =- =- =- =- =- =-");
 
 	} // Main End
