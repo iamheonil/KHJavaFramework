@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!-- MyBatis3 Configuration -->
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<!-- MyBatis3 Setting Tag -->  
+<configuration>
+
+	<!-- 접속할 DB의 정보 설정  -->
+	<environments default="development">
+		
+		<!-- 접속 가능한 DB 정보 태그 -->
+		<environment id="development">
+		
+			<!-- environment id의 필수 요소 태그들 -->
+			<!-- JDBC 를 이용한 트랜잭션 관리 설정 -->
+			<transactionManager type="JDBC"></transactionManager>
+			
+			<!-- DB 접속 정보 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+				<property name="username" value="scott"/>
+				<property name="password" value="tiger"/>
+			</dataSource>
+		
+		</environment>
+		
+	</environments>
+	
+	<!-- SQL 쿼리 매퍼 정보 -->
+	<mappers>
+		<mapper resource="dao/EmpMapper.xml" />
+	</mappers>
+
+</configuration>

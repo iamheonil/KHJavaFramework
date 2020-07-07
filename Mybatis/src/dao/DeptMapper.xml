@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- MyBatis 3 Mapper DTD -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.DeptDao">
+
+	<select id="selectByDeptno" parameterType="int" resultType="dto.Dept">
+		SELECT * FROM DEPT WHERE DEPTNO = #{deptno}
+	</select>
+	
+	<select id="selectAll" resultType="dto.Dept">
+		SELECT * FROM DEPT ORDER BY DEPTNO
+	</select>
+	
+	<select id="selectByDname" parameterType="String" resultType="dto.Dept">
+		SELECT * FROM DEPT WHERE DNAME = #{value}
+	</select>
+	
+	<select id="selectByDept" parameterType="dto.Dept" resultType="dto.Dept">
+		SELECT * FROM DEPT WHERE DNAME = #{dname}
+	</select>
+	
+	<insert id="insert" parameterType="dto.Dept">
+		INSERT INTO DEPT VALUES (#{deptno}, #{dname}, #{loc})
+	</insert>
+
+</mapper>
