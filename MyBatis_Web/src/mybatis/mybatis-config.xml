@@ -37,7 +37,7 @@
 	
 	<!-- SQL 쿼리 매퍼 정보 -->
 	<mappers>
-		<mapper resource="dao/EmpMapper.xml" />
+		<mapper resource="web/dao/EmpMapper.xml" />
 	</mappers>
 
 </configuration>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- MyBatis 3 Mapper DTD -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="web.dao.EmpDao">
+
+	<select id="selectAll" resultType="web.dto.Emp">
+		SELECT * FROM EMP ORDER BY EMPNO	
+	</select>
+	
+	<select id="selectDetail" parameterType="web.dto.Emp" resultType="web.dto.Emp">
+		SELECT * FROM EMP WHERE ENAME = #{ename}
+	</select>
+
+
+</mapper>
