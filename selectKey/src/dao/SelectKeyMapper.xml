@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- MyBatis 3 Mapper DTD -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="dao.SelectKeyDao">
+
+	<insert id="insertMember" parameterType="dto.SelectKey">
+		INSERT INTO test_member VALUES (TEST_MEMBER_SEQ.nextval, #{id}, #{pw})
+	</insert>
+
+
+</mapper>

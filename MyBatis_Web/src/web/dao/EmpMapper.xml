@@ -7,13 +7,55 @@
   
 <mapper namespace="web.dao.EmpDao">
 
+	<resultMap type="web.dto.Emp" id="E">
+		
+		<!-- Primary 키, result와 다른 효력은 없으며 사용할 때 주의해서 사용해라라는 뜻을 가지고 있다 -->
+		<id column="empno" property="empno" />
+		
+		<result column="ename" property="ename" />
+		<result column="job" property="job" />
+		<result column="mgr" property="mgr" />
+		<result column="hiredate" property="hiredate" />
+		<result column="sal" property="sal" />
+		<result column="comm" property="comm" />
+		<result column="deptno" property="deptno" />
+		
+	</resultMap>
+	
+	<!-- 많이 사용되는 SQL 구문을 따로 빼서 관리한다 -->	
+	<sql id="selectEmp">
+		SELECT * FROM EMP
+	</sql>
+	
+	<sql id="whereCondition">
+		WHERE EMPNO = #{empno}
+	</sql>
+
+	<!-- 
 	<select id="selectAll" resultType="web.dto.Emp">
 		SELECT * FROM EMP ORDER BY EMPNO	
+	</select> 
+	-->
+	
+	<select id="selectAll" resultMap="E">
+		<include refid="selectEmp" /> ORDER BY EMPNO
 	</select>
 	
 	<select id="selectDetail" parameterType="web.dto.Emp" resultType="web.dto.Emp">
 		SELECT * FROM EMP WHERE ENAME = #{ename}
 	</select>
 
+	<!-- 이런식으로 사용하는것도 가능하다
+	<select id="selectCountAll">
+		SELECT COUNT(*) FROM ( <include refid="selectEmp"/> )
+	</select> 
+	-->
+	
+	<!-- 이런식으로 사용하는것도 가능하다2 	
+	<select id="sqlId">
+		<include refid="selectEmp" />
+		<include refid="whereCondition" />
+	</select> 
+	-->
 
 </mapper>

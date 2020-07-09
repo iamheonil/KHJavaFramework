@@ -23,8 +23,6 @@ public class EmpDetailController extends HttpServlet {
 	@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		System.out.println("BreakPoint Test");
-		
 		// 조회할 이름 얻어오고 변환하여 Emp 에 세팅
 		String stringNo = req.getParameter("ename");
 		Emp empString = new Emp();
