@@ -53,7 +53,9 @@ public class SelectKeyController extends HttpServlet {
 		
 		selectKeyDao.insertMember(selectKey);
 		
-		resp.sendRedirect("/mybatis/selectKey");
+		req.setAttribute("selectKey", selectKey);
+		
+		req.getRequestDispatcher("/WEB-INF/views/result.jsp").forward(req, resp);
 		
 	}
 

@@ -8,7 +8,19 @@
 <mapper namespace="dao.SelectKeyDao">
 
 	<insert id="insertMember" parameterType="dto.SelectKey">
-		INSERT INTO test_member VALUES (TEST_MEMBER_SEQ.nextval, #{id}, #{pw})
+	
+		<selectKey order="BEFORE" resultType="int" keyProperty="no">
+			SELECT TEST_MEMBER_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		
+		INSERT INTO test_member VALUES (#{no}, #{id}, #{pw})
+		
+		
+		<!-- After 보다는 Before 가 더 좋다 -->
+		<!-- <selectKey order="AFTER" resultType="int" keyProperty="no"> -->
+				<!-- SELECT TEST_MEMBER_SEQ.CURRVAL FROM DUAL 위험! -->
+				<!-- SELECT MAX(NO) FROM TEST_MEMBER  -->
+		<!-- </selectKey> -->
 	</insert>
 
 
