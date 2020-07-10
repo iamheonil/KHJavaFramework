@@ -5,9 +5,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="dao.DynamicQueryDao">
+<mapper namespace="web.dao.DynamicQueryDao">
 
-	<select id="select" resultType="hashmap">
+<!-- 	<select id="select" resultType="hashmap">
 		
 		SELECT * FROM TEST_MEMBER
 	
@@ -15,9 +15,9 @@
 			 ORDER BY NO
 		</if>
 	
-	</select>
+	</select> -->
 	
-	<select id="select2" parameterType="string" resultType="dto.SelectKey">
+	<!-- <select id="select2" parameterType="string" resultType="dto.SelectKey">
 		SELECT * FROM TEST_MEMBER
 		<if test='id != null and !id.equals("")'>
 		WHERE id LIKE '%' || #{id} || '%'
@@ -48,7 +48,7 @@
 		
 		</trim>
 		
-	</select>
+	</select> -->
 	
 	<!-- Trim 사용 예시 1번 -->
 	<!-- 
@@ -95,5 +95,20 @@
 		</trim>
 	</update>
 	-->
+	
+	<select id="selectCheckbox" parameterType="hashMap" resultType="web.dto.Emp">
+	
+		SELECT * FROM EMP 
+		
+		<if test="dataArr != null">
+		WHERE DEPTNO IN
+		
+			<foreach collection="dataArr" item="deptno" open="(" close=")" separator=",">
+				#{deptno}
+			</foreach>
+			
+		</if>
+		
+	</select>
 
 </mapper>

@@ -13,4 +13,6 @@ public interface DynamicQueryDao {
 
 	public List select3(SelectKey selectKey);
 
+	public List<SelectKey> select4(HashMap<String, Object> map);
+
 }

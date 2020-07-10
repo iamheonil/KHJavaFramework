@@ -1,4 +1,4 @@
-package controller;
+package web.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import dao.DynamicQueryDao;
-import dto.SelectKey;
 import mybatis.MyBatisConnectionFactory;
+import web.dao.DynamicQueryDao;
+import web.dto.Emp;
 
 /**
  * Servlet implementation class DynamicQueryController
@@ -88,6 +88,8 @@ public class DynamicQueryController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		sqlSession = factory.openSession(true);
+		dynamicQueryDao = sqlSession.getMapper(DynamicQueryDao.class);
 		
 		// 전달 파라미터가 하나일 때만 사용 가능하다
 //		String data = req.getParameter("deptno");
@@ -99,6 +101,14 @@ public class DynamicQueryController extends HttpServlet {
 			System.out.println(dataArr[i]);
 		}
 		
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("dataArr", dataArr);
+		
+		List<Emp> list = dynamicQueryDao.selectCheckbox(map);
+		
+		for (Emp emp : list) {
+			System.out.println(emp);
+		}
 		
 	}
 	

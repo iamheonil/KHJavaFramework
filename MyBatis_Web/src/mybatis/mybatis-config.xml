@@ -38,6 +38,7 @@
 	<!-- SQL 쿼리 매퍼 정보 -->
 	<mappers>
 		<mapper resource="web/dao/EmpMapper.xml" />
+		<mapper resource="web/dao/DynamicQueryMapper.xml" />
 	</mappers>
 
 </configuration>
