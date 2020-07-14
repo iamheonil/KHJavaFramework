@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- MyBatis 3 Mapper DTD -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="multiparam.dao.MultiParamDao">
+
+	<insert id="insert" parameterType="EmpDTO">
+		INSERT INTO Emp(empno, ename, job) VALUES (#{empno}, #{ename}, #{job})
+	</insert>
+	
+	<insert id="insert2" parameterType="hashmap">
+		INSERT INTO Emp(empno, ename, job) VALUES (#{e1}, #{e2}, #{e3})
+	</insert>
+	
+	<insert id="insert3" parameterType="HashMap">
+		INSERT INTO EMP(EMPNO, ENAME, JOB) VALUES (#{empno}, #{ename}, #{job})
+	</insert>
+
+</mapper>

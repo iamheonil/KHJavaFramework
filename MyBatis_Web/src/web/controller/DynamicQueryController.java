@@ -109,6 +109,12 @@ public class DynamicQueryController extends HttpServlet {
 		for (Emp emp : list) {
 			System.out.println(emp);
 		}
+	
+		sqlSession.clearCache();
+		
+		req.setAttribute("list", list);
+		req.getRequestDispatcher("/WEB-INF/views/resultCheckbox.jsp").forward(req, resp);
+		
 		
 	}
 	

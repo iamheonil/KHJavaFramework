@@ -2,6 +2,9 @@ package web.dto;
 
 import java.util.Date;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("EmpDTO")
 public class Emp {
 
 	private int empno;
