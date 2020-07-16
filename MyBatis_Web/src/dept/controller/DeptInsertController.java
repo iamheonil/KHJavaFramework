@@ -41,6 +41,7 @@ public class DeptInsertController extends HttpServlet {
 			deptNo = Integer.parseInt(param);
 		}
 		
+		
 		dept.setDeptno(deptNo);
 		dept.setDname(req.getParameter("dname"));
 		dept.setLoc(req.getParameter("loc"));

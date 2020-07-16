@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 스프링 Bean 으로 객체를 등록하는 설정 -->
+	<bean id="car" class="di.xml.Car"/>
+
+	<bean id="gTire" class="di.tire.GoldTire"/>
+	<bean id="sTire" class="di.tire.SilverTire"/>
+
+</beans>

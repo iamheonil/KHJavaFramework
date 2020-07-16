@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- DI 어노테이션 허용 태그 -->
+	<!-- 이 태그가 있어야 @Autowired 사용 가능 -->
+	<context:annotation-config/>
+
+	<!-- Spring Bean 으로 객체 등록하는 설정 -->
+	<bean id="car" class="di.autowired.Car"/>
+
+	<bean id="gtire" class="di.tire.GoldTire"/>
+	<bean id="tire" class="di.tire.SilverTire"/>
+
+</beans>
