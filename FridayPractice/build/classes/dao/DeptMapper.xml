@@ -7,12 +7,16 @@
 
 <mapper namespace="dao.DeptDao">
 
-	<select id="selectAll" resultType="dto.Dept">
-		SELECT * FROM DEPT ORDER BY DEPTNO
+	<select id="selectAll" resultType="DeptAlias">
+		SELECT * FROM DEPT WHERE
 	</select>
 	
-	<select id="selectInfo" parameterType="dto.Dept" resultType="dto.Dept">
+	<select id="selectInfo" parameterType="DeptAlias" resultType="DeptAlias">
 		SELECT * FROM DEPT WHERE DEPTNO = #{deptno}
 	</select>
+	
+	<insert id="insert" parameterType="DeptAlias">
+		INSERT INTO DEPT(DEPTNO, DNAME, LOC) VALUES(#{deptno}, #{dname}, #{loc})
+	</insert>
 
 </mapper>

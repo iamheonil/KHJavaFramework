@@ -36,4 +36,14 @@ public class DeptDaoImpl implements DeptDao {
 		return dept;
 	}
 
+	@Override
+	public void insert(Dept dept) {
+
+		SqlSession sqlSession = factory.openSession(true);
+		sqlSession.insert(namespace + "insert", dept);
+		
+		sqlSession.commit();
+		
+	}
+
 }

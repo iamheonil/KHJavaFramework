@@ -1,5 +1,8 @@
 package dto;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("DeptAlias")
 public class Dept {
 
 	private int deptno;

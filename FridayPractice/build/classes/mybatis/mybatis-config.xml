@@ -27,16 +27,21 @@
 	
 	<!-- 데이터타입 별칭에 관하여 -->
 	<!-- 자바 타입(DTO) 의 별칭(TypeAlias) 를 붙여주는 설정 -->
-	<!-- <typeAliases>
-		<typeAlias type="web.dto.Emp" alias="Emp" />
-	</typeAliases> -->	
-	
+	<!-- 
+	<typeAliases>
+		<typeAlias type="dto.Dept" alias="DeptAlias" />
+	</typeAliases>
+	 -->
+	 
 	<!-- 위와 같은 방식으로 하나만 설정해주는것이 아니고 패키지단위로 설정한다 -->
 	<!-- 패키지, Alias 설정을 안해줘도 클래스 이름으로 자동으로 선언해주기 때문에 간편하다 -->
-<!-- 	<typeAliases>
+	
+	
+	<typeAliases>
 		<package name="dto"/>
 	</typeAliases>
- -->
+	
+	
 	<!-- 접속할 DB의 정보 설정  -->
 	<environments default="development">
 		

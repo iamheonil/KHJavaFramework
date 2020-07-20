@@ -10,4 +10,6 @@ public interface DeptDao {
 
 	public Dept selectInfo(int parseDeptno);
 
+	public void insert(Dept dept);
+
 }

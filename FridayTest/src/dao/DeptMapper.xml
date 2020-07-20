@@ -8,7 +8,7 @@
 <mapper namespace="dao.DeptDao">
 
 	<select id="selectAll" resultType="DeptAlias">
-		SELECT * FROM DEPT WHERE
+		SELECT * FROM DEPT ORDER BY DEPTNO
 	</select>
 	
 	<select id="selectInfo" parameterType="DeptAlias" resultType="DeptAlias">
