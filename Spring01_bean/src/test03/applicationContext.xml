@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="factorybean" class="test03.AbstractTest" factory-method="getInstance">
+	<!-- factory-method : factory 패턴에서 객체를 생성하여 반환하는 기능을 하는 메서드를 의미한다 -->
+	
+	</bean>	
+	
+		
+</beans>
