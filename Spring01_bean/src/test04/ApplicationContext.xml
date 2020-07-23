@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+	<bean id="myClass" class="test04.MyClass" />
+	
+	<bean id="date" class="java.util.Date">
+	<!-- Date Class 의 setYear() setMonth() setDay() -->
+		<property name="year" value="120"/>
+		<property name="month" value="11"/>
+		<property name="date" value="15"/>
+	</bean>
+		
+	<bean id="score" class="test04.Score">
+		<constructor-arg value="이순신"/>
+		<constructor-arg value="60"/>
+		<constructor-arg value="80"/>
+		<constructor-arg value="100"/>
+	</bean>
+	
+	<bean id="beanTest" class="test04.BeanTest">
+		<!-- ref = reference -->
+
+		<!-- 
+		1. public BeanTest 호출 (위에서 만든 date bean 의 아이디로 참조)
+		2. setMyClass 호출 (위에서 만든 myClass bean 의 아이디로 참조)
+		3. setNumber(int num) 호출
+		4. setArray(String[] array) 호출
+		5. setList(List<String> list) 호출
+		6. setSet(Set<String) set) 호출
+		7. setMap(Map<String, String> map) 호출
+		8. setProperties(Properties properties) 호출
+		9. setScore(List<Score>) 호출
+		 -->
+		
+		<constructor-arg ref="date"/>
+		<property name="myClass" ref="myClass" />
+		<property name="number" value="25" />
+		
+		<property name="array">
+			<array>
+				<value>홍길동</value>
+				<value>이순신</value>
+				<value>김시민</value>
+				<value>곽재우</value>
+			</array>
+		</property>
+		
+		<property name="list">
+			<list>
+				<value>봄</value>
+				<value>여름</value>
+				<value>가을</value>
+				<value>겨울</value>
+			</list>
+		</property>
+		
+		<property name="set">
+			<set>
+				<value>1</value>
+				<value>2</value>
+				<value>3</value>
+				<value>4</value>
+			</set>
+		</property>
+		
+		<property name="map">
+			<map>
+				<entry>
+					<key><value>1</value></key> <value>봄</value>
+				</entry>
+				<entry key="2" value="여름" />
+				<entry key="3" value="가을" />
+				<entry key="4" value="겨울" />
+			</map>
+		</property>
+		
+				<property name="properties">
+					<props>
+						<prop key="하늘">sky</prop>
+						<prop key="여름">summer</prop>
+					</props>
+				</property>
+		
+		<property name="score">
+			<list>
+				<bean class="test04.Score">
+					<constructor-arg value="홀깅동"/>
+					<constructor-arg value="90"/>
+					<constructor-arg value="50"/>
+					<constructor-arg value="30"/>
+				</bean>
+				
+				<!-- 
+				<ref bean="score"/>
+				 -->
+			</list>
+		</property>
+
+	</bean>
+</beans>
