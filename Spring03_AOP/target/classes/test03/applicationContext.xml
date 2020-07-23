@@ -1,35 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
+	<!-- AutoProxyCreator Bean과 PointcutAdvisor Bean 을 등록하지 않고도 Aop 를 가능하게 해주는 태그 -->
+	<aop:aspectj-autoproxy/>
+	
 	<bean id="man" class="test02.Man" />
 	<bean id="woman" class="test02.Woman" />
 
 	<bean id="myAdvice" class="test02.MyAdvice" />
 	
-	<!-- Proxy 객체 생성 -->
-	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
-	
-	<!-- advisor : advice + pointCut 세팅 -->
-	<bean id="myAdvisor" class="org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor">
-	
-		<property name="advice" ref="myAdvice" />
-		
-		<!-- 포인트컷 표현식 -->
-		
-		<!-- 
-		
-			"*" 모든 값을 의미
-			".." 0개 이상을 의미
-			execution([접근제어자] 리턴타입 [클래스] 메소드이름(파라미터))
-		
-		 -->
-	
-		<!-- value="execution(public * *())" 인자값이 없는 메소드 -->
-		<property name="expression" value="execution(public * test02..*.*(..))" />
-		
-	
-	</bean>
+	<aop:config>
+		<aop:aspect ref="myAdvice">
+			<aop:before method=""/>			
+		</aop:aspect>
+	</aop:config>	
 
 </beans>
