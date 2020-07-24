@@ -1,0 +1,308 @@
+	.content{
+		height:100%;
+		width:100%;		
+	}
+
+	.middle{
+		width : 100%;
+		padding-top:52%;
+		background-image : url('../image/main_banner_02.jpg');
+		background-repeat: no-repeat;
+		background-size:contain;
+		background-position: center;
+	}
+	
+	.wrap_site-main{
+		position:absolute;		
+		width:60%;
+		padding-top:25%;		
+		float:left;			
+		left: 20%;	
+		top:20%;		
+	}
+	
+	.site-main{
+		position:absolute;		
+		width:100%;
+		height:100%;		
+		background-color: rgba( 255, 255, 255, 0.5);
+		float:left;		
+		top:0%;		
+	}
+
+	.tit_site{
+		height:30%;
+		font-size : 5vw;	
+		transform: translateY(100%);
+	}
+	
+	.site_search{
+		width:100%;
+		height:12%;	
+		transform: translateY(300%);	
+		background-color:white ;
+		overflow:hidden;		
+	}
+	
+	.site_search input[type=text]{
+		height:100%;
+		width: 70%;	
+		float:left;
+		margin-left:1%;
+		font-size:1.5vw;	
+	}
+
+	.btn_search{	
+		width:20%;
+		height:100%;
+		float:left;	
+		font-size:1.5vw;	
+		background-color:red;	
+		color:white;
+	}
+
+	.btn_search p{
+		height:70%;
+		transform: translateY(22%);
+		font-weight: bold;
+	}
+	
+	.ico_search{
+		width:5%;
+		height:50%;
+		font-size:2vw;
+		transform: translateY(40%);
+		float:left;
+	}
+	
+	.ico_search i{
+		height:50%;
+	}
+
+	.wrap_gnb_menu{
+		color: white;		
+		width: 100%;
+		transform:translateY(-150%);
+	}
+
+	.gnb_menu{
+		width:100%;
+		height:100%;			
+	}
+
+	.gnb_menu div{
+		width: 20%;
+		margin-left:2%;
+		height: 100%;
+		display:inline-block;
+	}
+	
+	.gnb_menu i{
+		font-size:10vmin;
+	}
+	
+	.gnb_menu span{
+		display:block;
+		font-weight: bold;
+		margin-top:5%;
+	}
+
+	.book{
+		height:auto;
+		width:80%;
+		margin:0 auto;	
+		transform: translateY(-3%);
+	}
+
+	.wrap_book{
+		width:100%;			
+		padding-top:120%; 
+	}
+	
+	.box_book{
+		position:absolute;
+		height:100%;
+		width:100%;	
+		top: 0;
+		left: 0;	
+	}
+	
+	.box_tit_book{
+		width : 84%;
+		height : 2.5%;
+		left:8%;
+		font-size:1.5vw;
+		text-align:left;
+		color:black;
+	}
+	
+	.line_book{
+		overflow: hidden;	
+		height:20%;
+		margin-top:1%;
+		margin-bottom:1%;
+	}
+	
+	.book_item{		
+		float:left;
+		width:10%;
+		height:80%;
+		margin-left:8%;	
+	}
+
+	.img_book{
+		height:80%;
+		width:100%;
+	}
+	
+	.img_book img{
+		max-width:100%;
+		min-width:100%;
+		max-height:100%;
+		min-height:100%;
+		box-shadow: 2px 2px 5px black;
+	} 
+	
+	.tit_book{
+		margin-top:10%;
+		font-size:1vw;
+		height:20%;
+	}
+
+	.bottom{
+		background-color: lightgrey;
+		color: white;
+		height:25%;
+	}
+	
+	/* board  */
+	.menu{
+		overflow: hidden;		
+		color: white;		
+		width: 100%;
+		padding-bottom:10%;
+		margin-top:4%;
+	}
+
+	.box_menu{
+		position:absolute;
+		background-color:lightblue;
+		width:80%;
+		height:100%;
+		left:12.5%;
+	}
+	
+	.notice{
+		
+		text-align: left;
+		width:75%;
+		height:10%;
+		left:15%;
+		border-bottom:2px solid;
+	}
+	
+	.notice h2{
+		
+		top:50%;
+		transform:translateY(-50%);
+		height:40%;
+	}
+	
+	.box_search{
+		width:75%;
+		left:15%;
+		height:60%;
+	}
+	
+	.list_notice{
+		width:100%;
+	}
+	
+	.list_notice th{
+		 font-size: 1.5vw;
+		 background-color: grey;
+		 color:white;
+	}
+	
+	.list_notice td{
+		  border-bottom: 1px solid lightgrey;
+	}
+	
+	.paging{
+		height:10%;
+		font-size:1.5vw;
+	}
+	
+	.desc_notice{
+		text-align: left;
+		width:75%;
+		height:50%;
+		left:15%;
+	}
+	
+	.tit_notice{
+		width:100%;
+		height:15%;
+		text-align: left;
+		font-size:1.5vw;
+		padding:1% 0 1% 0;
+		border-bottom:2px solid;
+	}
+	
+	.info{
+		width:100%;
+		height:10%;
+		
+		float:left;
+		text-align: left;
+		border-bottom:1px solid;
+	}
+	
+	.info span{
+		width:25%;
+		height:50%;
+		float:left;
+		transform:translateY(50%);
+	}
+	
+	.more{
+		width:50%;
+		height:10%;
+		
+		float:right;
+		text-align: right;
+	}
+	
+	.text{
+		text-align: left;
+		height:65%;
+		width:100%;
+		margin-top:5%;
+		border-bottom:1px solid;
+	}
+
+	.btn_section{
+		margin-top:1%;
+		margin-left:1%;
+		width:7%;
+		height:10%;
+		float:right;
+		background-color:black;
+	}
+	.wrap_board{
+		overflow:hidden;
+		width:70%;
+		left:30%;
+	}
+
+	/* .img_book{
+		float:left;
+		width:30%;
+	}
+	
+	.desc_book{
+		float:left;
+		width:70%;
+	} */
+	
+	

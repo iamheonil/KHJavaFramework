@@ -1,0 +1,179 @@
+/*  
+	A. CSS 네이밍 규칙(정하기 나름)
+	1. 시작이름은 영문 대문자, 숫자, 특수문자로 시작할 수 없다.(파일 및 폴더 제외)
+	2. 네이밍의 조합은 '형태 의미 순서_상태'을 기본 순서로 사용한다.
+	3. class : -     css Naming 용도
+	   id : _		 JavaScript 용도
+	   name : camel  Java용도
+ 
+	B. reset css
+	개발의 편의를 위해 HTML의 기본속성을 변경하는 작업
+*/
+	html,body{  	
+		margin:0%;
+		padding:0;
+		height:100%;			
+	}
+
+	h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, blockquote,form,fieldset, legend, input 
+	{
+   		margin: 0;
+    	padding: 0;
+		border:none;
+	}
+	
+	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset
+	,legend,textarea,p,blockquote,th,td,input,select,textarea,button,nav,section,footer,aside 
+	{margin:0;padding:0; position:relative;}
+	fieldset,img {border:0 none}
+	dl,ul,ol,menu,li {list-style:none}
+	blockquote, q {quotes: none}
+	blockquote:before, blockquote:after,q:before, q:after {content:'';content:none}
+	input,select,textarea,button {vertical-align:middle}
+	button {border:0 none;background-color:transparent;cursor:pointer; outline: 0; }
+	a {color:#333;text-decoration:none;}
+	a:active, a:hover {text-decoration:none;}
+	address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
+	form{width:100%; height:100%;}	
+		
+	div{		
+		color: black;		
+		text-align: center;
+		box-sizing: border-box;
+		/* 	
+			box-shadow: 
+				1px 0 0 0 grey, 
+				0 1px 0 0 grey, 
+				1px 1px 0 0 grey,
+				1px 0 0 0 grey inset, 
+				0 1px 0 0 grey inset;	  
+		*/
+	}
+	
+	/*
+		모든 페이지에 공통으로 들어가는 요소(top, side-bar)들에 대한
+		CSS적용
+	 */
+	 
+	.section_header{
+		position:fixed;
+		width:100%;	
+		height:8%;
+		z-index:999;
+	}
+	
+	.top{	
+		position:absolute;
+		width:100%;	
+		height: 100%;
+		background-color: #ffffff;
+		font-size:3vmin;
+		overflow: hidden;
+	}		
+	
+	.logo_top{	
+		width: 15%;		
+		height:100%;	
+		float:left;
+	}
+	
+	.logo_text_top{	
+		width: 100%;
+		height:50%;
+		float:left;
+		text-align:center;
+		transform:translateY(50%);
+	}
+	
+	.search_top{	
+		width: 40%;
+		height:100%;
+		float:left;	
+	}
+	
+	.inp_search_top{
+		width:90%;
+		height:50%;
+		float:left;	
+		transform:translateY(50%);
+		border-bottom:outset;
+	}
+	
+	.btn_search_top{
+		width:5%;
+		height:100%;
+		float:left;	
+	}
+	
+	.top_user{	
+		float: right;
+		width: 45%;	
+		height:100%;
+	}	
+	
+	.top_user-join{	
+		float: right;
+		width: 30%;	
+		height:50%;
+		transform:translateY(50%);
+		text-align: center;
+	}
+	
+	.top_user-login{	
+		float: right;
+		width: 30%;	
+		height:50%;
+		transform:translateY(50%);
+		text-align: right;
+	}		
+	
+	.wrap_side-bar{
+		position:fixed; 
+		width:6%; 
+		padding-top:20%;
+		left:2%; 
+		top:35%; 
+		/* z-index: 500; */
+	}
+	
+	.side-bar{
+		position:absolute; 
+		width:100%; 
+		height:100%;	
+		top:0%;
+	}
+	
+	.side-bar span{
+		width:100%;
+		height:10%;
+		font-size: 1.5vw;
+		border-bottom: 1px solid #c0c0c0;
+	}
+	
+	.side-bar ul{
+		width:100%;
+		height:90%;
+		padding:0%;
+	}
+	
+	.side-bar .d1{
+		width:100%;
+		height:25%;
+	}
+	
+	.side-bar .d1 i{
+		font-size:1vw;
+		display:block;
+		transform:translateY(50%);
+		height:60%;
+	}
+
+	.side-bar .d1 a{
+		display:block;
+		height:30%;
+		font-size:1vw;
+	}
+	
+	.side-bar li:hover {
+		background-color:lightblue;
+	}

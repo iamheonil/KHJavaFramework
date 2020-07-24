@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<!-- Spring MVC 와 관련된 annotation 을 등록해준다, @RequestMapping, @Value 등을 자동 처리 -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- 
+	
+		/resources 로 요청이 왔을 때 스캔할 경로
+		webapp 폴더 아래에 있는 resource 폴더를 찾는데, 해당폴더에는 html, css, js, image 등을 보관한다
+		  
+	 -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	
+	<!-- 
+		
+		사용할 view 를 결정해주는 viewResolver 객체
+		ex) setViewName() 의 값 앞 뒤에 prefix 와 suffix 를 붙여준다
+		
+	 -->
+	
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	
+	<!-- Bean 을 자동으로 등록하기 위한 component-scan 태그 -->
+	<context:component-scan base-package="com.heonil.www" />
+	
+	
+	
+</beans:beans>

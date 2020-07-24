@@ -1,0 +1,61 @@
+	.wrap_my{
+		height:70%;
+	}
+	
+	.myinfo{
+		overflow:hidden;
+		width:50%;
+		left:30%;
+		height:20%;
+		font-size:2vw;
+	}
+	
+	.myinfo :nth-child(1) {
+		width:30%;
+		float:left;
+		height:100%;
+		color:graytext;
+	}
+	
+	.myinfo :nth-child(2) {
+		width:65%;
+		float:left;
+		height:100%;
+		color:red;
+	}
+	
+	.recentbook{
+		height:auto;
+		width:80%;
+		top:1%;
+		margin:0 auto;	
+	}
+
+	.wrap_recentbook{
+		width:100%;	
+		padding-top:20%; 
+	}
+	
+	.box_recentbook{
+		position:absolute;
+		height:100%;
+		width:100%;	
+		top: 0;
+		left: 0;	
+	}
+	
+	.line_recentbook{
+		overflow: hidden;	
+		height:100%;
+		margin-top:1%;
+		margin-bottom:1%;
+	}
+	
+	.recentbookItem{		
+		float:left;
+		width:17%;
+		left:10%;
+		height:100%;
+		margin-left:3%;	
+	}
+	
