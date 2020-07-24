@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<aop:aspectj-autoproxy />
+	
+	<bean id="rectangle" class="com.edu.entity.Rectangle"> 
+		<property name="title" value="삼각형"></property>
+		<property name="width" value="3"></property>
+		<property name="height" value="5"></property>
+	</bean>
+	
+	<bean id="triangle" class="com.edu.entity.Triangle">
+		<property name="title" value="사각형"></property>
+		<property name="width" value="3"></property>
+		<property name="height" value="5"></property>	
+	</bean>
+	
+	<bean id="myAspect" class="com.edu.aop.MyAspect" />
+
+
+</beans>

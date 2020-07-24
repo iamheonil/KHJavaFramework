@@ -8,14 +8,21 @@
 	<!-- AutoProxyCreator Bean과 PointcutAdvisor Bean 을 등록하지 않고도 Aop 를 가능하게 해주는 태그 -->
 	<aop:aspectj-autoproxy/>
 	
-	<bean id="man" class="test02.Man" />
-	<bean id="woman" class="test02.Woman" />
+	<bean id="man" class="test03.Man" />
+	<bean id="woman" class="test03.Woman" />
 
-	<bean id="myAdvice" class="test02.MyAdvice" />
+	<bean id="myAdvice" class="test03.MyAdvice" />
 	
 	<aop:config>
 		<aop:aspect ref="myAdvice">
-			<aop:before method=""/>			
+			
+			<!-- 타겟 객체 호출 전 advice 추가 -->
+			<!-- method 는 레퍼런스인 myAdvice 의 before, after 메소드 명과 같아야한다 -->
+			<aop:before method="before" pointcut="execution(public * *(..))" />
+			
+			<!-- 타겟 객체 호출 후 advice 추가 -->
+			<aop:after method="after" pointcut="execution(public * *(..))" />
+					
 		</aop:aspect>
 	</aop:config>	
 
