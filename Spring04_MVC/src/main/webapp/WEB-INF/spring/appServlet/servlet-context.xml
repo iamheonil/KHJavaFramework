@@ -10,35 +10,37 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<!-- Spring MVC 와 관련된 annotation 을 등록해준다, @RequestMapping, @Value 등을 자동 처리 -->
+	<!-- 
+	
+	<mvc:annotation-driven/> 
+	Spring MVC와 관련된 annotation을 등록해준다.
+	@RequestMapping, @Valid 등을 자동 처리 -->
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	<!-- 
-	
-		/resources 로 요청이 왔을 때 스캔할 경로
-		webapp 폴더 아래에 있는 resource 폴더를 찾는데, 해당폴더에는 html, css, js, image 등을 보관한다
-		  
-	 -->
+	<!-- /resources 로 요청이 왔을때 스캔할 경로입니다.
+		 webapp 아래에 있는 resource 폴더를 찾겠다.
+		 해당 폴더에 image, css, js, html 파일 같은 정적데이터를 보관
+		 정적데이터 : 개발자가 코드를 변경하지 않는 이상 변할 일이 없는 데이터
+		 		jsp같은 경우 매번 다른 값이 추가되어 생성된다.
+	  -->
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	
-	<!-- 
-		
-		사용할 view 를 결정해주는 viewResolver 객체
-		ex) setViewName() 의 값 앞 뒤에 prefix 와 suffix 를 붙여준다
-		
-	 -->
-	
+	<!-- 사용할 view를 결정해주는 viewResolver 객체
+		ex) setViewName()의 값 앞 뒤에 prefix와 suffix를 붙여준다.
+	-->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- 빈을 자동으로 등록하기 위한 component-scan 태그 -->
+	<context:component-scan base-package="com.kh.welcome" />
 	
-	<!-- Bean 을 자동으로 등록하기 위한 component-scan 태그 -->
-	<context:component-scan base-package="com.heonil.www" />
+	
+	
+	
 	
 	
 	

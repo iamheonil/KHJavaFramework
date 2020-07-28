@@ -4,5 +4,52 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+	<!-- 어디서나 참조가 가능해야하는 Bean들을 root-context.xml에 등록 -->	
+	
+	<!-- 
+		1. PropertyPlaceholderConfigurer 
+		외부의 프로퍼티에 저장된 정보를 스프링 설정파일에서 사용할 수 있도록 해주는 bean
+	-->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<!-- classpath : src/main/java, src/main/resources -->
+				<value>classpath:mybatis/db.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- sqlSessionFactoryBean 을 setDataSource 메소드에 전달하기 위해 dataSource 타입의 객체를 생성 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+			<!-- ${driver} : db.properties 의 driver 값 -->
+		<property name="driverClassName" value="${driver}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis/config.xml"/>
+	</bean>
+	
+	<!-- sqlSessionTemplate -->
+	<!-- 
+		1. 멀티 쓰레드 환경에 안전하다, Bean 으로 등록해서 사용할 수 있다
+		2. Spring 의 트랜잭션 관리기술과 연동하여 트랜잭션 관리를 Spring 으로 할 수 있게 해준다
+		3. myBatisException 을 DataAccessException 으로 바꿔준다
+	 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </beans>

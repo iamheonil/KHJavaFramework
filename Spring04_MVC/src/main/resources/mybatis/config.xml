@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+	<!-- DB컬럼명을 Java의 Camel표기법으로 자동 매핑 -->
+	<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="com.kh.welcome.member.model.vo.Member" alias="MEMBER" />
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="/mybatis/mapper/memberMapper.xml" />
+	</mappers>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</configuration>  

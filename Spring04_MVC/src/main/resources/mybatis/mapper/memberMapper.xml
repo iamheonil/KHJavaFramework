@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="MEMBER">
+
+<!-- 
+
+	Vo - MyBatis 매핑
+	
+	1. vo로 매핑을 할 경우, #{} 값과 vo의 필드변수명이 동일하다
+	2. Map<String, Object> 로 매핑을 할 경우, Map 의 Key값과 #{ } 값이 일치해야한다
+	3. Map 안에 vo 가 들어있거나 Map 이 들어있는 경우에는 '.' 을 사용해서 안쪽 객체에도 접근이 가능하다
+		ex) insert("MEMBER.insertMember", map) #map.userId = ?
+	4. 기본타입을 매개변수로 넘겼을 경우 #{ } 안의 값과 매개변수명이 일치해야한다
+	
+
+ -->
+
+	<insert id="insertMember">
+		INSERT INTO tb_member (user_id, password, email, tel) VALUES (#{userId}, #{password}, #{email}, #{tel})
+	</insert>
+
+
+	<select id="selectMember" resultType="MEMBER">
+		SELECT USER_ID, PASSWORD, EMAIL, TEL, REG_DATE FROM TB_MEMBER WHERE USER_ID = #{id} AND PASSWORD = #{pw} AND IS_LEAVE = 0
+	</select>
+	
+	<update id="updateMember">
+	
+		UPDATE TB_MEMBER SET 
+		USER_ID = #{userId},
+		PASSWORD = #{password},
+		EMAIL = #{email},
+		TEL = #{tel}
+		WHERE USER_ID = #{userId}
+		
+	</update>
+	
+
+</mapper>

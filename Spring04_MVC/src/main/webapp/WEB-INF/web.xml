@@ -1,50 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
-xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" 
-id="WebApp_ID" version="4.0">
-
-<!-- 
-
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-
--->
-	
-	<!-- 
-		스프링에서 제공해주는 웹 요청과 응답에 대한 문자(한글) 인코딩 처리 Filter
-	 	
-	 	Request 로 온 데이터에 대한 UTF-8 Encoding 처
-	 -->
-	 
-	 <filter>
-	 
-	 	<filter-name>CharacterEncodingFilter</filter-name>
-	 	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-	 	
-	 	
-	 	<init-param>
-	 		<param-name>encoding</param-name>
-	 		<param-value>UTF-8</param-value>
-	 	</init-param>
-	 	
-	 	
-	 	<!-- forceEncoding 은 Response 할 때 Encoding 할 것인지 여부 true / false -->
-	 	<init-param>
-	 		<param-name>forceEncoding</param-name>
-	 		<param-value>true</param-value>
-	 	</init-param>
-	 	
-	 </filter>
-	 
-	 <filter-mapping>
-	 	<filter-name>CharacterEncodingFilter</filter-name>
-	 	<url-pattern>/*</url-pattern>
-	 </filter-mapping>
-	 
-	
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	
+	<!-- 스프링에서 제공해주는 웹 요청과 응답에 대한 문자 인코딩 처리 Filter -->
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<!-- Request로 온 데이터에 대한 encoding 처리  -->
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<!-- Response 할 때 해당 Encoding타입으로 처리할지 여부 -->
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
@@ -59,18 +36,17 @@ id="WebApp_ID" version="4.0">
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		
-		<!--
-		
-		Dispatcher 서블릿이 생성될 때 servlet-context.xml 의 경로를 초기화 파라미터로 가져가서 webApplicationContext 를 생성한 뒤
-		servlet-context.xml 파일의 등록되어 있는 Bean 을 webApplicationContext 에 등록한다
-		
-		 -->
-		
+		<!-- Dispatcher 서블릿이 생성될 때 servlet-context.xml의 경로를 
+		초기화 파라미터로 가져가서 webApplicationContext를 생성한 뒤  servlet-context.xml
+		의 파일에 등록되어있는 bean을 webApplicationContext에 등록해준다.
+		-->
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
+		<!-- Web Application이 시작되면 자동으로 Dispatcher Servlet을
+			생성하게끔 하는 설정
+		  -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 		
@@ -78,5 +54,16 @@ id="WebApp_ID" version="4.0">
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+
+
+
+
+
+
+
+
+
+
 
 </web-app>
