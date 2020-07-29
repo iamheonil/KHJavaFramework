@@ -33,5 +33,17 @@ public class MemberDao {
 		return session.update("MEMBER.updateMember", member);
 		
 	}
+	
+	public int deleteMember(Member member) {
+		
+		return session.delete("MEMBER.deleteMember", member);
+		
+	}
+	
+	public int idCheck(String userId) {
+		
+		return session.selectOne("MEMBER.idCheck", userId);
+		
+	}
 
 }

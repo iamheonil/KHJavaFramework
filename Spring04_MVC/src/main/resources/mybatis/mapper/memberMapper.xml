@@ -38,5 +38,13 @@
 		
 	</update>
 	
+	<delete id="deleteMember">
+		DELETE FROM TB_MEMBER WHERE USER_ID = #{userId}
+	</delete>
+	
+	<select id="idCheck" resultType="int">
+		SELECT COUNT(*) FROM TB_MEMBER WHERE USER_ID = #{userId}
+	</select>
+	
 
 </mapper>

@@ -35,4 +35,16 @@ public class MemberService {
 		
 	}
 	
+	public int deleteMember(Member member) {
+		
+		return memberDao.deleteMember(member);
+		
+	}
+	
+	public int selectId(String userId) {
+		
+		return memberDao.idCheck(userId);
+				
+	}
+	
 }

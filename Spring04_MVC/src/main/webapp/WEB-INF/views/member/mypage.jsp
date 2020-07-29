@@ -93,7 +93,7 @@ input{
 			<button onclick="selectUrl('/member/modify.do')">수정하기</button>
 		</div>
 		<div class="leave">
-			<button onclick="selectUrl('/member/leave.do')">탈퇴하기</button>
+			<button onclick="selectUrl('/member/delete.do')">탈퇴하기</button>
 		</div>
 		<br><br>
 	</div>

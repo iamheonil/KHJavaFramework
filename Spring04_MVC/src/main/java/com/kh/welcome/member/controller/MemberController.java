@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.welcome.member.model.service.MemberService;
@@ -77,7 +78,7 @@ public class MemberController {
 
 		// @RequestParam Map<String,Object> commandMap
 		String root = req.getContextPath();
-		
+
 		ModelAndView mav = new ModelAndView();
 
 		int res = memberService.insertMember(member);
@@ -95,12 +96,13 @@ public class MemberController {
 	}
 
 	@RequestMapping("/loginimple.do")
-	public ModelAndView loginImpl(@RequestParam Map<String, Object> commandMap, HttpSession session, HttpServletRequest req) {
+	public ModelAndView loginImpl(@RequestParam Map<String, Object> commandMap, HttpSession session,
+			HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		Member res = memberService.selectMember(commandMap);
-		
-		if(res != null) {
+
+		if (res != null) {
 			session.setAttribute("loginInfo", res);
 			mav.addObject("alertMsg", "로그인 하이");
 			mav.addObject("url", "/member/mypage.do");
@@ -110,32 +112,81 @@ public class MemberController {
 			mav.addObject("url", "/member/login.do");
 			mav.setViewName("common/result");
 		}
-		
+
 		return mav;
 	}
-	
+
 	@RequestMapping("/mypage.do")
 	public void myPage() {
-		
+
 	}
-	
+
 	@RequestMapping("/modify.do")
 	public ModelAndView update(@ModelAttribute Member member, HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView();
 		int res = memberService.updateMember(member);
-		
+
+		HttpSession session = req.getSession();
+
+		// select 쿼리
+		// 1. 결과가 하나인 경우 -> selectOne
+		// 2. 결과가 여러개인 경우 -> selectList
+
+		// insert 쿼리 sqlSessionTemplate.insert(namespace.tagId, Mapping Object)
+		// update 쿼리 sqlSessionTemplate.update()
+		// delete 쿼리 sqlSessionTemplate.delete()
+
 		if (res > 0) {
 			mav.addObject("alertMsg", "수정 성공!");
 			mav.addObject("url", "/member/mypage.do");
+			session.setAttribute("loginInfo", member);
 			mav.setViewName("common/result");
 		} else {
 			mav.addObject("alertMsg", "수정 실패하였습니다.");
 			mav.addObject("url", "/member/mypage.do");
 			mav.setViewName("common/result");
 		}
-		
+
 		return mav;
-		
+
 	}
-	
+
+	@RequestMapping("/delete.do")
+	public ModelAndView delete(@ModelAttribute Member member, HttpServletRequest req) {
+		ModelAndView mav = new ModelAndView();
+
+		int res = memberService.deleteMember(member);
+
+		if (res > 0) {
+			mav.addObject("alertMsg", "삭제 성공!");
+			mav.addObject("url", "/member/login.do");
+			mav.setViewName("common/result");
+		} else {
+			mav.addObject("alertMsg", "삭제 실패하였습니다.");
+			mav.addObject("url", "/member/mypage.do");
+			mav.setViewName("common/result");
+		}
+
+		return mav;
+
+	}
+
+	@RequestMapping("/idcheck.do")
+	@ResponseBody
+	// 메소드에서 @ResponseBody 어노테이션을 지정하면 메소드에서 리턴하는 값을 viewResolver 를 거쳐서
+	// 출력하지 않고 Http Response Body 에 직접 쓴다
+	public String idCheck(String userId) {
+
+		System.out.println("확인하는 아이디 : " + userId);
+
+		int res = memberService.selectId(userId);
+
+		// 아이디가 있다면 유저아이디를 다시 보내줌
+		if (res > 0) {
+			return userId;
+		} else {
+			return "";
+		}
+
+	}
 }
