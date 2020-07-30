@@ -189,4 +189,21 @@ public class MemberController {
 		}
 
 	}
+
+	@RequestMapping("joinemailcheck.do")
+	public ModelAndView joinEmailCheck(Member member, HttpServletRequest req) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		String urlPath = req.getServerName() + ":" + req.getServerPort() + req.getContextPath();
+		
+		memberService.mailSending(member, urlPath);
+		
+		mav.addObject("alertMsg", "이메일을 확인해보셔");
+		mav.addObject("url", "login.do");
+		mav.setViewName("common/result");
+		
+		return mav;
+	}
+	
 }

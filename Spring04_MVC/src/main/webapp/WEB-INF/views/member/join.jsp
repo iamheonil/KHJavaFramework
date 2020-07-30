@@ -85,7 +85,7 @@ function validate() {
 	<div class="memberBox">
 		<div class="join">
 		      <form 
-			       action="<%=request.getContextPath()%>/member/joinimple.do"
+			       action="<%=request.getContextPath()%>/member/joinemailcheck.do"
 			       method="post" onsubmit="return validate();">
 			       	<span class="sector-title">회원가입</span>
 			        <div class="join-info">

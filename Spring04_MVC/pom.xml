@@ -16,12 +16,75 @@
 	</properties>
 	<dependencies>
 	
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.4</version>
+		</dependency>
+				
+	
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.6</version>
+		</dependency>
+				
+	
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context-support</artifactId>
+		    <version>5.2.6.RELEASE</version>
+		</dependency>
+			
+	
+		<!-- 메일발송 -->
+		<!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+		<dependency>
+		    <groupId>com.sun.mail</groupId>
+		    <artifactId>javax.mail</artifactId>
+		    <version>1.6.2</version>
+		</dependency>
+				
+	
+		<!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl -->
+		<dependency>
+		    <groupId>org.codehaus.jackson</groupId>
+		    <artifactId>jackson-mapper-asl</artifactId>
+		    <version>1.9.13</version>
+		</dependency>
+		
+	
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.10.2</version>
+		</dependency>
+		
+		<!-- 
+		
+			jackson-databind, jackson-core 의 역할
+			json 으로 들어온 컨트롤러의 파라미터를 java 객체로 바꿔준다
+			자바 Map 또는 vo 로 반환한 객체를 json 으로 바꿔준다
+		
+		 -->
+		
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		    <version>2.10.2</version>
+		</dependency>
+		
 		<!-- MyBatis 의 preparedStatement 에 일일이 값을 넣지 않고 객체를 전송하면 mapping 시켜주는 Dependency -->
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-orm</artifactId>
-		<version>5.2.6.RELEASE</version>
-	</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>5.2.6.RELEASE</version>
+		</dependency>
 		
 	
 		<!-- Spring -->
