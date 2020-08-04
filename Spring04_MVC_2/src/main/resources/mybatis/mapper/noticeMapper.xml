@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="Notice">
+
+	<insert id="insertNotice">
+		insert into tb_notice
+		(n_idx, user_id, reg_date, title, content)
+		values(
+			SC_NOTICE_IDX.nextval,
+			#{userId}, sysdate, #{title}, #{content})
+	</insert>
+	<insert id="insertFile">
+		insert into tb_file
+		(f_idx, n_idx, origin_file_name,
+		 rename_file_name, save_path)
+		values(
+		sc_file_idx.nextval, 
+		sc_notice_idx.currval,
+		#{originFileName},
+		#{renameFileName},
+		#{savePath}
+		)
+	</insert>
+	<select id="selectNoticeList" resultType="NOTICE">
+		select
+		n_idx, user_id, reg_date,
+		title, content
+		from(
+			select rownum rnum, n1.*
+			from(
+				select * 
+				from tb_notice
+				order by n_idx desc
+			) n1
+		)where rnum between #{start} and #{end}
+	</select>
+	<!-- 전체 게시글 숫자 반환 -->
+	<select id="selectContentCnt" resultType="int">
+		select count(*) from tb_notice	
+	</select>
+	<!-- 게시글 상세 -->
+	<select id="selectNoticeDetail" resultType="NOTICE">
+		select
+		*
+		from tb_notice
+		where n_idx = #{nIdx}
+	</select>
+	
+	<!-- 게시글 별 파일정보 반환 -->
+	<resultMap type="map" id="fileData">
+		<result column="origin_file_name" property="originFileName"/>
+		<result column="rename_file_name" property="renameFileName"/>
+		<result column="SAVE_PATH" property="savePath"/>
+		<result column="n_idx" property="nIdx"/>
+		<result column="f_idx" property="fIdx"/>
+	</resultMap>
+	
+	<select id="selectFileWithNotice" resultMap="fileData">
+		select
+		*
+		from tb_file
+		where n_idx = #{nIdx}
+	</select>
+	
+	<delete id="deleteNoticeFile">
+	
+		DELETE FROM TB_FILE WHERE F_IDX = #{fIdx}
+	
+	</delete>
+
+	<select id="selectSavePath" resultType="String">
+
+		SELECT SAVE_PATH FROM TB_FILE WHERE F_IDX = #{fIdx}
+		
+	</select>
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+</mapper>  
