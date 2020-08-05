@@ -1,0 +1,80 @@
+	.line_recentbook{
+		overflow:hidden;
+		margin-top: 5%;
+		margin-bottom: 5%;
+	}
+	
+	.book-use{
+		overflow:hidden;
+		width:90%;
+		left:3%;
+		transform:translateY(-600%);
+		position:absolute;
+		display:none;
+	}
+	
+	.book-use div{
+		float:left;
+		width:50%;
+	}
+	
+	.book-use div a{
+		font-size:1.5vw;
+		color:white;
+	    font-weight: bolder;
+	    background-color:black;
+	}
+	
+	.wrap_board{
+		overflow:hidden;
+		width:70%;
+		left:15%;
+	}
+
+	.img_book{
+		float:left;
+		width:30%;
+	}
+	
+	.img_book div{
+		font-size : 2vw;
+		background-color:red;
+	}
+	
+	.img_book a{
+		color:white;
+	}
+	
+	.desc_book{
+		float:left;
+		width:70%;
+	}
+	
+	
+	.wrap_my{
+		height:70%;
+	}
+	
+	.myinfo{
+		overflow:hidden;
+		width:50%;
+		left:30%;
+		height:20%;
+		font-size:1.5vw;
+		margin-bottom:5%;
+	}
+	
+	.myinfo :nth-child(1) {
+		width:45%;
+		float:left;
+		height:100%;
+		color:graytext;
+	}
+	
+	.myinfo :nth-child(2) {
+		width:50%;
+		float:left;
+		height:100%;
+		color:red;
+		font-size:1vw;
+	}	

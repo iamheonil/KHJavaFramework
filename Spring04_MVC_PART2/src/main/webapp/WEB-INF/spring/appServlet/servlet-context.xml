@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+	<aop:aspectj-autoproxy/>
+	
+	
+	<!-- 
+	
+	proxy-target-class="true" -> 스프링이 interface 가 없어도 프록시 객체를 생성한다
+	interface 대신 상속을 활용해서 프록시 객체를 생성한다
+	
+	단점 : 상속을 활용하기 때문에 타깃클래스(부모 클래스)의 기본 생성자가 반복적으로 호출되게 된다
+	
+	 -->
+	<tx:annotation-driven proxy-target-class="false" transaction-manager="transactionManager" />
+	
+	<beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<!-- root-context.xml 에 등록한 dataSource bean 을 참조 -->
+		<beans:property name="dataSource" ref="dataSource">
+			
+		</beans:property>
+	</beans:bean>
+	
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+	
+		<tx:attributes>
+			<!-- select 로 시작하는 모든 메소드 -->
+			<tx:method name="select*"/>
+			<tx:method name="update*" propagation="REQUIRED" rollback-for="Exception.class" />
+			<tx:method name="insert*" propagation="REQUIRED" rollback-for="Exception.class" />
+			<tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception.class" />
+		</tx:attributes>
+	
+	</tx:advice>
+	
+	<aop:config>
+		<!-- 
+		[] <- 생략가능
+		[접근제한자] 반환타입 [패키지] [클래스명] 메소드(매개변수) 
+		-->
+	
+		<aop:pointcut expression="execution(* com.kh.welcome..*.*ServiceImpl.*(..))" id="requiredTx" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="requiredTx" />
+	</aop:config>
+	
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	
+	<beans:bean name="logAop" class="common.aop.LogAop"></beans:bean>
+	
+	
+	
+	<context:component-scan base-package="com.kh.welcome" />
+	
+	
+	
+</beans:beans>
