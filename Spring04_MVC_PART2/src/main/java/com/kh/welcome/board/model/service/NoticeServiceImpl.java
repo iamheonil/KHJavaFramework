@@ -33,7 +33,7 @@ public class NoticeServiceImpl implements NoticeService {
 		
 		if (!(files.size() == 1 && files.get(0).getOriginalFilename().equals(""))) {
 
-			int errorNumber = 10/0;
+			// int errorNumber = 10/0;
 			
 			// 파일업로드를 위해 FileUtil.fileUpload() 호출
 			List<Map<String, String>> filedata = new FileUtil().fileUpload(files, root);
