@@ -12,12 +12,14 @@
 			<div class="top_user">
 				<a class="top_user-join" href="<%=request.getContextPath()%>/member/join.do">회원가입</a>
 				<a class="top_user-login" href="<%=request.getContextPath()%>/member/login.do">Login</a>
+				<a class="top_user-board" href="<%=request.getContextPath()%>/notice/noticelist.do">Board</a>
 			</div>
 			</c:if>
 			<c:if test="${logInInfo != null}">
 			<div class="top_user">
 				<a class="top_user-join" href="<%=request.getContextPath()%>/member/logout.do">Logout</a>
-				<a class="top_user-login" href="<%=request.getContextPath()%>/mypage/mypage.do">MyPage</a>
+				<a class="top_user-login" href="<%=request.getContextPath()%>/member/mypage.do">MyPage</a>
+				<a class="top_user-board" href="<%=request.getContextPath()%>/notice/noticelist.do">Board</a>
 			</div>
 			</c:if>
  		</div>

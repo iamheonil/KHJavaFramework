@@ -10,15 +10,20 @@
 		values
 			(#{userId},#{password},#{email},#{tell})
 	</insert>
+	
+	<!-- 패스워드 암호화 이전 로그인 쿼리 
 	<select id="selectMember" resultType="MEMBER">
-		select 
-			user_id, password, email, tell, reg_date
-		from
-			tb_member
-		where 
-			user_id=#{id} and password = #{pw}
-			and is_leave = 0
+		select user_id, password, email, tell, reg_date from tb_member
+		where user_id=#{id} and password = #{pw} and is_leave = 0
+	</select> 
+	-->
+	
+	<!-- 암호화 이후 로그인 쿼리 -->
+	<select id="selectMember" resultType="MEMBER">
+		select user_id, password, email, tell, reg_date from tb_member
+		where user_id=#{id} and is_leave = 0
 	</select>
+	
 	<update id="updateMember">
 		update
 			tb_member

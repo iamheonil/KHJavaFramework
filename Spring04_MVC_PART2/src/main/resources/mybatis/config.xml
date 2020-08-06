@@ -13,11 +13,13 @@
 		<typeAlias type="com.kh.welcome.board.model.vo.Notice" alias="NOTICE"/>
 	
 	</typeAliases>
+
+	<!-- 테스트환경 구현으로 인한 주석처리 
 	<mappers>
 		<mapper resource="/mybatis/mapper/memberMapper.xml"/>
 		<mapper resource="/mybatis/mapper/noticeMapper.xml"/>
 	</mappers>
-
+ 	-->
 
 
 

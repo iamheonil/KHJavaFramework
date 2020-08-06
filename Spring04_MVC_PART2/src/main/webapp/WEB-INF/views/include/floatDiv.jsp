@@ -5,8 +5,10 @@
         <span>menu</span>
         <ul class="fdlist"><!-- d1 -->
             <li class="d1">
+            <a href="/notice/noticelist.do">
             	<i class="far fa-clipboard"></i>
-                <a href="#!">게시판</a>
+                게시판
+                </a>
             </li>
             <li class="d1">
             	<i class="fas fa-search-plus"></i>
