@@ -24,6 +24,7 @@ import com.kh.welcome.board.model.service.NoticeServiceImpl;
 import com.kh.welcome.board.model.vo.Notice;
 import com.kh.welcome.member.model.vo.Member;
 
+import common.exception.FileException;
 import common.util.FileUtil;
 
 @Controller
@@ -46,12 +47,13 @@ public class NoticeController {
 	public ModelAndView noticeUpload(
 			// 다중파일 업로드임으로
 			// 여러개의 MultipartFile을 담기 위한 List 생성
-			@RequestParam List<MultipartFile> files, HttpSession session, Notice notice) {
+			@RequestParam List<MultipartFile> files, HttpSession session, Notice notice) throws FileException {
 		ModelAndView mav = new ModelAndView();
 
 		String root = session.getServletContext().getRealPath("/");
 		Member sessionMember = (Member) session.getAttribute("logInInfo");
 
+		try {
 		// 로그인한 회원이라면
 		if (sessionMember != null) {
 			// 게시글 작성자에 해당 회원의 아이디
@@ -64,6 +66,10 @@ public class NoticeController {
 		noticeService.insertNotice(notice, files, root);
 		// notice/noticelist.do로 다시 요청
 		mav.setViewName("redirect:noticelist.do");
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new FileException("F_ERROR_01");
+		}
 		return mav;
 	}
 

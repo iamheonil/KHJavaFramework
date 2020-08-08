@@ -40,10 +40,14 @@
 	
 		<tx:attributes>
 			<!-- select 로 시작하는 모든 메소드 -->
+			<!-- 
+			Custom Exception 이 발생했을 때 트랜잭션 관리를 스프링으로 하기 위해서 해당 Exception 이
+			Exception 을 상속받고 있더라도 정확하게 rollback-for 속성에 해당 Exception 을 등록 해줘야한다
+			-->
 			<tx:method name="select*"/>
-			<tx:method name="update*" propagation="REQUIRED" rollback-for="Exception.class" />
-			<tx:method name="insert*" propagation="REQUIRED" rollback-for="Exception.class" />
-			<tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception.class" />
+			<tx:method name="update*" propagation="REQUIRED" rollback-for="Exception, common.exception.CustomException" />
+			<tx:method name="insert*" propagation="REQUIRED" rollback-for="Exception, common.exception.CustomException" />
+			<tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception, common.exception.CustomException" />
 		</tx:attributes>
 	
 	</tx:advice>

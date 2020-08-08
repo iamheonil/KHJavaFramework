@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kh.welcome.board.model.dao.NoticeDao;
 import com.kh.welcome.board.model.vo.Notice;
 
+import common.exception.FileException;
 import common.util.FileUtil;
 import common.util.Paging;
 
@@ -36,7 +37,13 @@ public class NoticeServiceImpl implements NoticeService {
 			// int errorNumber = 10/0;
 			
 			// 파일업로드를 위해 FileUtil.fileUpload() 호출
-			List<Map<String, String>> filedata = new FileUtil().fileUpload(files, root);
+			List<Map<String, String>> filedata = null;
+			try {
+				filedata = new FileUtil().fileUpload(files, root);
+			} catch (FileException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			for (Map<String, String> f : filedata) {
 				noticeDao.insertFile(f);

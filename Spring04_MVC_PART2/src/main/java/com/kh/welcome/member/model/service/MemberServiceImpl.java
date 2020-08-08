@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 import com.kh.welcome.member.model.dao.MemberDao;
 import com.kh.welcome.member.model.vo.Member;
 
+import common.exception.MailException;
+
 @Service
 public class MemberServiceImpl implements MemberService {
 
@@ -65,10 +67,10 @@ public class MemberServiceImpl implements MemberService {
 
 	// 회원정보 수정 메소드
 	public int updateMember(Member member) {
-		
+
 		String password = member.getPassword();
 		String springPassword = "";
-		
+
 		springPassword = passwordEncoder.encode(password);
 		member.setPassword(springPassword);
 
@@ -111,27 +113,36 @@ public class MemberServiceImpl implements MemberService {
 		});
 	}
 
-	public void mailSendingToLeave(Member member) {
+	public void mailSendingToLeave(Member member) throws MailException { 
 
 		String setfrom = "azimemory@naver.com";
 		String tomail = member.getEmail();
 		String title = "안녕히 가세요.";
 		String htmlBody = "<h1>안녕히 가세요.</h1>";
 
-		mailSender.send(new MimeMessagePreparator() {
-			public void prepare(MimeMessage mimeMessage) throws MessagingException {
-				MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-				// 보내는 이
-				message.setFrom(setfrom);
-				// 받는 이
-				message.setTo(tomail);
-				// 메일 제목
-				message.setSubject(title);
-				// 메일 내용
-				// 두번째 boolean값은 html 여부 (true : html , false : text)
-				message.setText(htmlBody, true);
-			};
-		});
+		try {
+			
+			// int testNum = 10 / 0;
+			
+			mailSender.send(new MimeMessagePreparator() {
+				public void prepare(MimeMessage mimeMessage) throws MessagingException {
+					MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+					// 보내는 이
+					message.setFrom(setfrom);
+					// 받는 이
+					message.setTo(tomail);
+					// 메일 제목
+					message.setSubject(title);
+					// 메일 내용
+					// 두번째 boolean값은 html 여부 (true : html , false : text)
+					message.setText(htmlBody, true);
+				};
+			});
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new MailException("M_ERROR_01");
+		}
 	}
 
 }
